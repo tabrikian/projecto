@@ -78,9 +78,7 @@ point* get_points(){
             printf("An Error Has Occurred\n");
             return NULL;
         }
-        scanf("%lf", &val);
-        points[i].cordinates[cord] = val;
-        for(cord = 1; cord < d; cord++){
+        for(cord = 0; cord < d; cord++){
             scanf("%lf", &val);
             points[i].cordinates[cord] = val;
             getchar();
