@@ -147,7 +147,6 @@ cluster* find_closeset_cluster(cluster** clusters, point p){
     for(i = 0; i < k; i++){
         if (distance_from_cluster(*closest, p) > distance_from_cluster(*(clusters[i]), p))
             closest = clusters[i];
-        printf("hi\n");
     }
     return closest;
 }
@@ -185,16 +184,12 @@ int main(int argc, char * argv[]){
         return 1;
     }
 
-    printf("setup complete\n");
     for(i = 0; i < iter; i++){
         /*step 3 in the algorithem*/
         for(j = 0; j < n; j++){
             closest = find_closeset_cluster(clusters, points[j]);
-            printf("closest cluster found for iter %d point %d\n", i, j);
             add_point_to_cluster(closest, points[j]);
         }
-
-        printf("closest clusters found for iter %d\n", i);
 
         /*step 4 in the algorithem*/
         max_change = 0;
@@ -207,8 +202,6 @@ int main(int argc, char * argv[]){
                 max_change = change;
         }
 
-        printf("clusters updated for iter %d\n", i);
-        
         /*step 5 in the algorithem*/
         if (max_change < EPS)
             break;
