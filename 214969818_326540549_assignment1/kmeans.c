@@ -207,16 +207,12 @@ int main(int argc, char * argv[]){
             break;
     }
     /*print results*/
-    printf("%.4f", clusters[0]->mean.cordinates[0]);
-    for(j = 1; j < d; j++){
-        printf(",%.4f", clusters[0]->mean.cordinates[j]);
-    }
-    for(i = 1;  i < k; i++){
-        printf("\n");
+    for(i = 0;  i < k; i++){
         printf("%.4f", clusters[i]->mean.cordinates[0]);
         for(j = 1; j < d; j++){
             printf(",%.4f", clusters[i]->mean.cordinates[j]);
         }
+        printf("\n");
     }
     cleanup(points, clusters);
     return 0;

@@ -70,6 +70,8 @@ def main():
     tests_passed=True
     print("2)\tComparing c output to provided outputs")
     if run_cmd(pre_file+"kmeans 3 800 3 600 < "+input1_file_path)!=output1:
+        print(output1)
+        print(run_cmd(pre_file+"kmeans 3 800 3 600 < "+input1_file_path))
         print("\t\tError in 2.1")
         tests_passed=False
     if run_cmd(pre_file+"kmeans 7 430 11 < "+input2_file_path)!=output2:
