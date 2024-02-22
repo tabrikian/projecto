@@ -183,12 +183,15 @@ int main(int argc, char * argv[]){
         return 1;
     }
 
+    printf("setup vompleat\n");
     for(i = 0; i < iter; i++){
         /*step 3 in the algorithem*/
         for(j = 0; j < n; j++){
             closest = find_closeset_cluster(clusters, points[j]);
             add_point_to_cluster(closest, points[j]);
         }
+
+        printf("closest clusters found for iter %d\n", i);
 
         /*step 4 in the algorithem*/
         max_change = 0;
@@ -200,6 +203,8 @@ int main(int argc, char * argv[]){
             if (change > max_change)
                 max_change = change;
         }
+
+        printf("clusters updated for iter %d\n", i);
         
         /*step 5 in the algorithem*/
         if (max_change < EPS)
