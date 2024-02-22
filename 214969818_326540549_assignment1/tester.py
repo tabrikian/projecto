@@ -202,7 +202,7 @@ def main():
     #Return value of c program tests
     print("6)\tTesting return value of c program")
     tests_passed=True
-    if get_ret_code(pre_file+"kmeans 15 5000 5 300 5 < "+input1_file_path)!=1:
+    if get_ret_code(pre_file+"kmeans 15 5000 5 300 5 < "+input1_file_path+" < a.txt")!=1:
         print("\t\tError 6.1")
         tests_passed=False
     if get_ret_code(pre_file+"kmeans 15 5000 5 300 < "+input3_file_path)!=0:

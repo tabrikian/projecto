@@ -11,7 +11,8 @@ def ret_args():
         if len(arg_lst) == 3:
             arg_lst.append('200')
         else:
-            print("too many arguments")
+            print("An Error Has Occurred")
+            exit()
 
     N = float(arg_lst[1])
     if not N.is_integer() or N <= 1:
@@ -70,6 +71,7 @@ def main():
     K, N, d, max_iter = ret_args()
     filename = sys.argv[-1]
     if filename[-4:] != ".txt":
+        print("An Error Has Occurred")
         exit()
     f = open(filename, 'r')
     p = f.read().split('\n')
