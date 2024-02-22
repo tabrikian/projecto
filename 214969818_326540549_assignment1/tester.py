@@ -70,12 +70,7 @@ def main():
     tests_passed=True
     print("2)\tComparing c output to provided outputs")
     if run_cmd(pre_file+"kmeans 3 800 3 600 < "+input1_file_path)!=output1:
-        print("expect")
-        print(output1)
         x = run_cmd(pre_file+"kmeans 3 800 3 600 < "+input1_file_path)
-        print("got")
-        print(x)
-        print(len(x))
         print("\t\tError in 2.1")
         tests_passed=False
     if run_cmd(pre_file+"kmeans 7 430 11 < "+input2_file_path)!=output2:
@@ -249,6 +244,7 @@ def run_cmd(cmd):
     s=subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,stderr=subprocess.PIPE).stdout.read().decode()
     if platform.system() == "Windows":
         s = s.replace("\r","")
+    print(s)
     return s
 
 def get_ret_code(cmd):
