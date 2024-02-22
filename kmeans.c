@@ -98,12 +98,10 @@ cluster* create_clasters(point* points){
         clusters[i].size_of_points = 0;
         clusters[i].points = (point*) malloc(sizeof(point)*n);
         clusters[i].mean.cordinates = (double*) malloc(sizeof(double)*d);
-        printf("cluster %d malloced\n", i);
         if (clusters[i].points == NULL || clusters[i].mean.cordinates == NULL){
             printf("An Error Has Occurred\n");
             return NULL;
         }
-        printf("cluster %d malloced good\n", i);
         for (j = 0; j < d; j++){
             clusters[i].mean.cordinates[j] = points[i].cordinates[j];
         }
@@ -180,7 +178,6 @@ int main(int argc, char * argv[]){
     if(points == NULL){
         return 1;
     }
-    printf("got points\n");
     clusters = create_clasters(points);
     if(clusters == NULL){
         return 1;
@@ -191,6 +188,7 @@ int main(int argc, char * argv[]){
         /*step 3 in the algorithem*/
         for(j = 0; j < n; j++){
             closest = find_closeset_cluster(clusters, points[j]);
+            printf("closest cluster found for iter %d point %d\n", i, j);
             add_point_to_cluster(closest, points[j]);
         }
 
