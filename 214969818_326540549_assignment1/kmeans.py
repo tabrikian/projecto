@@ -14,23 +14,40 @@ def ret_args():
             print("An Error Has Occurred")
             exit()
 
-    N = float(arg_lst[1])
-    if not N.is_integer() or N <= 1:
+    if arg_lst[1].isnumeric():
+        N = float(arg_lst[1])
+        if not N.is_integer() or N <= 1:
+            print("Invalid number of points!")
+            exit()
+    else:
         print("Invalid number of points!")
         exit()
 
-    K = float(arg_lst[0])
-    if not K.is_integer() or K >= N or K <= 1:
+    if arg_lst[0].isnumeric():
+        K = float(arg_lst[0])
+        if not K.is_integer() or K >= N or K <= 1:
+            print("Invalid number of clusters!")
+            exit()
+    else:
         print("Invalid number of clusters!")
         exit()
 
-    d = int(arg_lst[2])
-    if d < 1:
+    if arg_lst[2].isnumeric():
+        d = float(arg_lst[2])
+        if not d.is_integer() or d < 1:
+            print("Invalid dimension of point!")
+            exit()
+        d = int(arg_lst[2])
+    else:
         print("Invalid dimension of point!")
         exit()
 
-    iter_n = float(arg_lst[3])
-    if not iter_n.is_integer() or iter_n >= 1000 or iter_n <= 1:
+    if arg_lst[3].isnumeric():
+        iter_n = float(arg_lst[3])
+        if not iter_n.is_integer() or iter_n >= 1000 or iter_n <= 1:
+            print("Invalid maximum iteration!")
+            exit()
+    else:
         print("Invalid maximum iteration!")
         exit()
 
