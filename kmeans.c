@@ -87,7 +87,7 @@ point* get_points(){
     return points;
 }
 
-cluster* create_clasters(point* points){ 
+cluster** create_clasters(point* points){ 
     cluster* clusters = (cluster*) malloc(sizeof(cluster)*k);
     int i, j;
     if (clusters == NULL){
@@ -150,7 +150,7 @@ cluster* find_closeset_cluster(cluster** clusters, point p){
     return closest;
 }
 
-void cleanup(point* points, cluster* clusters){
+void cleanup(point* points, cluster** clusters){
     int i;
     for(i = 0; i < n; i++){
         free(points[i].cordinates);
@@ -158,8 +158,8 @@ void cleanup(point* points, cluster* clusters){
     free(points);
 
     for(i = 0; i < k; i++){
-        free(clusters[i].points);
-        free(clusters[i].mean.cordinates);
+        free(clusters[i]->points);
+        free(clusters[i]->mean.cordinates);
     }
     free(clusters);
 }
@@ -199,7 +199,7 @@ int main(int argc, char * argv[]){
 
         for(j = 0; j < k; j++){
             change = update_mean_in_cluster(clusters[j]);
-            clear_cluster(clusters + j);
+            clear_cluster(clusters[j]);
 
             if (change > max_change)
                 max_change = change;
