@@ -248,7 +248,9 @@ def run_cmd(cmd):
     return s
 
 def get_ret_code(cmd):
-    return subprocess.run(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE).returncode
+    x = subprocess.run(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE).returncode
+    print(x)
+    return x
 
 
     
