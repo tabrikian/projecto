@@ -42,7 +42,7 @@ int set_parameters(int num_of_args, char * args[]){
     k = atoi(args[1]);
     n = atoi(args[2]);
     if (n <= k || 1 >= k){
-        printf("Invalid number of clusters!\n");
+        printf("Invalid number of clusters! %d\n", k);
         return 1;
     }
     if (n <= 1){
@@ -80,7 +80,7 @@ point* get_points(){
         }
         for(cord = 0; cord < d; cord++){
             if (scanf("%lf", &val) == 1){
-                printf("An Error Has Occurred\n");
+                printf("An Error Has Occurred %d\n", val);
                 return NULL;
             }
             points[i].cordinates[cord] = val;
