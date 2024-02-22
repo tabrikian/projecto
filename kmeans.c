@@ -95,7 +95,7 @@ cluster** create_clasters(point* points){
         return NULL;
     }
     for(i = 0; i < k; i ++){
-        clusters[i] = malloc(sizeof(cluster));
+        clusters[i] = (cluster*) malloc(sizeof(cluster));
         clusters[i]->size_of_points = 0;
         clusters[i]->points = (point*) malloc(sizeof(point)*n);
         clusters[i]->mean.cordinates = (double*) malloc(sizeof(double)*d);
@@ -147,6 +147,7 @@ cluster* find_closeset_cluster(cluster** clusters, point p){
     for(i = 0; i < k; i++){
         if (distance_from_cluster(*closest, p) > distance_from_cluster(*(clusters[i]), p))
             closest = clusters[i];
+        printf("hi\n");
     }
     return closest;
 }
