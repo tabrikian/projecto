@@ -98,6 +98,7 @@ cluster* create_clasters(point* points){
         clusters[i].size_of_points = 0;
         clusters[i].points = (point*) malloc(sizeof(point)*n);
         clusters[i].mean.cordinates = (double*) malloc(sizeof(double)*d);
+        printf("cluster %d malloced\n", i);
         if (clusters[i].points == NULL || clusters[i].mean.cordinates == NULL){
             printf("An Error Has Occurred\n");
             return NULL;
