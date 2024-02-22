@@ -109,9 +109,9 @@ cluster* create_clasters(point* points){
     return clusters;
 }
 
-void add_point_to_cluster(cluster c, point p){
-    c.points[c.size_of_points] = p;
-    c.size_of_points++;
+void add_point_to_cluster(cluster *c, point p){
+    c->points[c->size_of_points] = p;
+    c->size_of_points++;
 }
 
 double update_mean_in_cluster(cluster c){
@@ -136,12 +136,12 @@ void clear_cluster(cluster *c){
     c->size_of_points = 0;
 }
 
-double distance_from_cluster(cluster c, point p){
-    return distance(p, c.mean);
+double distance_from_cluster(cluster *c, point p){
+    return distance(p, c->mean);
 }
 
-cluster find_closeset_cluster(cluster* clusters, point p){
-    cluster closest;
+cluster* find_closeset_cluster(cluster** clusters, point p){
+    cluster* closest;
     int i;
     for(i = 0; i < k; i++){
         if (distance_from_cluster(closest, p) > distance_from_cluster(clusters[i], p))
@@ -167,7 +167,7 @@ void cleanup(point* points, cluster* clusters){
 int main(int argc, char * argv[]){
     point* points;
     cluster* clusters;
-    cluster closest;
+    cluster* closest;
     int i, j;
     double change, max_change;
 
