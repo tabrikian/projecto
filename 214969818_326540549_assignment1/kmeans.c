@@ -81,15 +81,10 @@ point* get_points(){
         scanf("%lf", &val);
         points[i].cordinates[cord] = val;
         for(cord = 1; cord < d; cord++){
-            if(getchar()!= (int)','){
-                printf("An Error Has Occurred\n"); /*wrong format*/
-                return NULL;}
             scanf("%lf", &val);
             points[i].cordinates[cord] = val;
+            getchar();
         }
-        if(getchar()!= (int)'\n'){
-            printf("An Error Has Occurred\n"); /*wrong format*/
-            return NULL;}
     }
     return points;
 }
