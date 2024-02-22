@@ -142,7 +142,7 @@ double distance_from_cluster(cluster c, point p){
 }
 
 cluster* find_closeset_cluster(cluster** clusters, point p){
-    cluster* closest;
+    cluster* closest = clusters[0];
     int i;
     for(i = 0; i < k; i++){
         if (distance_from_cluster(*closest, p) > distance_from_cluster(*(clusters[i]), p))
