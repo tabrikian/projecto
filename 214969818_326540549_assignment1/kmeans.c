@@ -161,6 +161,7 @@ void cleanup(point* points, cluster** clusters){
     for(i = 0; i < k; i++){
         free(clusters[i]->points);
         free(clusters[i]->mean.cordinates);
+        free(clusters[i]);
     }
     free(clusters);
 }
