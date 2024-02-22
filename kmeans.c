@@ -138,13 +138,13 @@ void clear_cluster(cluster *c){
 }
 
 double distance_from_cluster(cluster *c, point p){
+    printf("searching\n");
     return distance(p, c->mean);
 }
 
 cluster* find_closeset_cluster(cluster** clusters, point p){
     cluster* closest;
     int i;
-    printf("searching\n");
     for(i = 0; i < k; i++){
         if (distance_from_cluster(closest, p) > distance_from_cluster(clusters[i], p))
             closest = clusters[i];
