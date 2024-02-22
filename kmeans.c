@@ -95,6 +95,7 @@ cluster** create_clasters(point* points){
         return NULL;
     }
     for(i = 0; i < k; i ++){
+        clusters[i] = malloc(sizeof(cluster));
         clusters[i]->size_of_points = 0;
         clusters[i]->points = (point*) malloc(sizeof(point)*n);
         clusters[i]->mean.cordinates = (double*) malloc(sizeof(double)*d);
