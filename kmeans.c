@@ -178,12 +178,13 @@ int main(int argc, char * argv[]){
     if(points == NULL){
         return 1;
     }
+    printf("got points\n");
     clusters = create_clasters(points);
     if(clusters == NULL){
         return 1;
     }
 
-    printf("setup vompleat\n");
+    printf("setup complete\n");
     for(i = 0; i < iter; i++){
         /*step 3 in the algorithem*/
         for(j = 0; j < n; j++){
