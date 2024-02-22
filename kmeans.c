@@ -88,22 +88,22 @@ point* get_points(){
 }
 
 cluster** create_clasters(point* points){ 
-    cluster* clusters = (cluster*) malloc(sizeof(cluster)*k);
+    cluster** clusters = (cluster**) malloc(sizeof(cluster*)*k);
     int i, j;
     if (clusters == NULL){
         printf("An Error Has Occurred\n");
         return NULL;
     }
     for(i = 0; i < k; i ++){
-        clusters[i].size_of_points = 0;
-        clusters[i].points = (point*) malloc(sizeof(point)*n);
-        clusters[i].mean.cordinates = (double*) malloc(sizeof(double)*d);
-        if (clusters[i].points == NULL || clusters[i].mean.cordinates == NULL){
+        clusters[i]->size_of_points = 0;
+        clusters[i]->points = (point*) malloc(sizeof(point)*n);
+        clusters[i]->mean.cordinates = (double*) malloc(sizeof(double)*d);
+        if (clusters[i]->points == NULL || clusters[i]->mean.cordinates == NULL){
             printf("An Error Has Occurred\n");
             return NULL;
         }
         for (j = 0; j < d; j++){
-            clusters[i].mean.cordinates[j] = points[i].cordinates[j];
+            clusters[i]->mean.cordinates[j] = points[i].cordinates[j];
         }
     }
     return clusters;
