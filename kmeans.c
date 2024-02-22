@@ -114,20 +114,20 @@ void add_point_to_cluster(cluster *c, point p){
     c->size_of_points++;
 }
 
-double update_mean_in_cluster(cluster c){
+double update_mean_in_cluster(cluster* c){
     double squared_dis = 0;
     double t;
     double avg;
     int i, cord;
     for (cord = 0; cord < k; cord++){
         avg = 0;
-        for(i = 0; i < c.size_of_points; i++){
-            avg += c.points[i].cordinates[cord];
+        for(i = 0; i < c->size_of_points; i++){
+            avg += c->points[i].cordinates[cord];
         }
-        avg /= c.size_of_points;
-        t = c.mean.cordinates[cord]-avg;
+        avg /= c->size_of_points;
+        t = c->mean.cordinates[cord]-avg;
         squared_dis += t*t;
-        c.mean.cordinates[cord] = avg;
+        c->mean.cordinates[cord] = avg;
     }
     return sqrt(squared_dis);
 }
@@ -166,7 +166,7 @@ void cleanup(point* points, cluster* clusters){
 
 int main(int argc, char * argv[]){
     point* points;
-    cluster* clusters;
+    cluster** clusters;
     cluster* closest;
     int i, j;
     double change, max_change;
@@ -213,9 +213,9 @@ int main(int argc, char * argv[]){
     }
     /*print results*/
     for(i = 0;  i < k; i++){
-        printf("%.4f", clusters[i].mean.cordinates[0]);
+        printf("%.4f", clusters[i]->mean.cordinates[0]);
         for(j = 1; j < d; j++){
-            printf(",%.4f", clusters[i].mean.cordinates[j]);
+            printf(",%.4f", clusters[i]->mean.cordinates[j]);
         }
         printf("\n");
     }
