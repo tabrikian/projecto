@@ -34,14 +34,13 @@ double distance(point p, point q){
     return sqrt(squared_dis);
 }
 
-int set_parameters(){
-    int num_of_args = __argc;
+int set_parameters(int num_of_args, char * args[]){
     if (num_of_args < 4 || num_of_args > 5){
         printf("An Error Has Occurred\n");
         return 1;
     }
-    k = atoi(__argv[1]);
-    n = atoi(__argv[2]);
+    k = atoi(args[1]);
+    n = atoi(args[2]);
     if (n <= k || 1 >= k){
         printf("Invalid number of clusters!\n");
         return 1;
@@ -50,13 +49,13 @@ int set_parameters(){
         printf("Invalid number of points!\n");
         return 1;
     }
-    d = atoi(__argv[3]);
+    d = atoi(args[3]);
     if (d < 1){
         printf("Invalid dimension of point!\n");
         return 1;
     }
     if (num_of_args == 5){
-        iter = atoi(__argv[4]);
+        iter = atoi(args[4]);
         if (1000 <= iter || 1 >= iter){
             printf("Invalid maximum iteration!\n");
             return 1;
@@ -101,8 +100,8 @@ cluster* create_clasters(point* points){
     for(i = 0; i < k; i ++){
         clusters[i].size_of_points = 0;
         clusters[i].points = (point*) malloc(sizeof(point)*n);
-        clusters[i].mean = (double*) malloc(sizeof(double)*d);
-        if (clusters[i].points == NULL || clusters[i].mean == NULL){
+        clusters[i].mean.cordinates = (double*) malloc(sizeof(double)*d);
+        if (clusters[i].points == NULL || clusters[i].mean.cordinates == NULL){
             printf("An Error Has Occurred\n");
             return NULL;
         }
@@ -136,8 +135,8 @@ double update_mean_in_cluster(cluster c){
     return sqrt(squared_dis);
 }
 
-void clear_cluster(cluster c){
-    c.size_of_points = 0;
+void clear_cluster(cluster *c){
+    c->size_of_points = 0;
 }
 
 double distance_from_cluster(cluster c, point p){
@@ -148,8 +147,8 @@ cluster find_closeset_cluster(cluster* clusters, point p){
     cluster closest;
     int i;
     for(i = 0; i < k; i++){
-        if (distance_from_cluster(closest, p) > distance_from_cluster(clusters+i, p))
-            closest = clusters+i;
+        if (distance_from_cluster(closest, p) > distance_from_cluster(clusters[i], p))
+            closest = clusters[i];
     }
     return closest;
 }
@@ -163,19 +162,19 @@ void cleanup(point* points, cluster* clusters){
 
     for(i = 0; i < k; i++){
         free(clusters[i].points);
-        free(clusters[i].mean);
+        free(clusters[i].mean.cordinates);
     }
     free(clusters);
 }
 
-int main(){
+int main(int argc, char * argv[]){
     point* points;
     cluster* clusters;
     cluster closest;
     int i, j;
     double change, max_change;
 
-    if (set_parameters()){
+    if (set_parameters(argc, argv)){
         return 1;
     }
     points = get_points();
@@ -199,7 +198,7 @@ int main(){
 
         for(j = 0; j < k; j++){
             change = update_mean_in_cluster(clusters[j]);
-            clear_cluster(clusters[j]);
+            clear_cluster(clusters + j);
 
             if (change > max_change)
                 max_change = change;
