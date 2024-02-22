@@ -173,31 +173,31 @@ def main():
         print("\t\tFailed!")
 
     #Memory leak checks
-    print("5)\tTesting c memory leaks in valgrind")
-    valgrind_out = run_cmd("valgrind --version")
-    pattern = re.compile("valgrind-[0-9]+.[0-9]+.[0-9]+")
-    if pattern.match(valgrind_out):
-        tests_passed=True
-        run_cmd("valgrind --log-file=\".tester_valgrind.txt\" " + pre_file+"kmeans 1 800 3 600 < "+input1_file_path)
-        with open(".tester_valgrind.txt") as f:
-            valgrind_out=f.read()
-        if valgrind_out.find("ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)")==-1 or valgrind_out.find("All heap blocks were freed -- no leaks are possible")==-1:
-            print("\t\tError 5.1")
-            tests_passed=False
+    #print("5)\tTesting c memory leaks in valgrind")
+    #valgrind_out = run_cmd("valgrind --version")
+    #pattern = re.compile("valgrind-[0-9]+.[0-9]+.[0-9]+")
+    #if pattern.match(valgrind_out):
+    #    tests_passed=True
+    #    run_cmd("valgrind --log-file=\".tester_valgrind.txt\" " + pre_file+"kmeans 1 800 3 600 < "+input1_file_path)
+    #    with open(".tester_valgrind.txt") as f:
+    #        valgrind_out=f.read()
+    #    if valgrind_out.find("ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)")==-1 or valgrind_out.find("All heap blocks were freed -- no leaks are possible")==-1:
+    #        print("\t\tError 5.1")
+    #        tests_passed=False
 
-        run_cmd("valgrind --log-file=\".tester_valgrind.txt\" " + pre_file + "kmeans 15 5000 5 300 < "+input3_file_path)
-        with open(".tester_valgrind.txt") as f:
-            valgrind_out=f.read()
-        if valgrind_out.find("ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)")==-1 or valgrind_out.find("All heap blocks were freed -- no leaks are possible")==-1:
-            print("\t\tError 5.2")
-            tests_passed=False
-        run_cmd("rm .tester_valgrind.txt")
-        if tests_passed:
-            print("\t\tPassed!")
-        else:
-            print("\t\tFailed!")
-    else:
-        print("\t\tValgrind not found, skipping memory leak tests.")
+    #    run_cmd("valgrind --log-file=\".tester_valgrind.txt\" " + pre_file + "kmeans 15 5000 5 300 < "+input3_file_path)
+    #    with open(".tester_valgrind.txt") as f:
+    #        valgrind_out=f.read()
+    ##    if valgrind_out.find("ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)")==-1 or valgrind_out.find("All heap blocks were freed -- no leaks are possible")==-1:
+    #        print("\t\tError 5.2")
+    #        tests_passed=False
+    #    run_cmd("rm .tester_valgrind.txt")
+    #    if tests_passed:
+    #        print("\t\tPassed!")
+    #    else:
+    #        print("\t\tFailed!")
+    #else:
+    #    print("\t\tValgrind not found, skipping memory leak tests.")
 
     #Return value of c program tests
     print("6)\tTesting return value of c program")

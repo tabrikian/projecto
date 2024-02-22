@@ -42,7 +42,7 @@ int set_parameters(int num_of_args, char * args[]){
     k = atoi(args[1]);
     n = atoi(args[2]);
     if (n <= k || 1 >= k){
-        printf("Invalid number of clusters! %d\n", k);
+        printf("Invalid number of clusters!\n");
         return 1;
     }
     if (n <= 1){
