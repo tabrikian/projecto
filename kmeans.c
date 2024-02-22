@@ -103,7 +103,8 @@ cluster* create_clasters(point* points){
             printf("An Error Has Occurred\n");
             return NULL;
         }
-        for (j = 0; j < d; i++){
+        printf("cluster %d malloced good\n", i);
+        for (j = 0; j < d; j++){
             clusters[i].mean.cordinates[j] = points[i].cordinates[j];
         }
     }
