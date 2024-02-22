@@ -69,8 +69,7 @@ def main():
     #Checking exact match of outputs given in tests in c program
     tests_passed=True
     print("2)\tComparing c output to provided outputs")
-    if run_cmd(pre_file+"kmeans 3 800 3 600 < "+input1_file_path)!=output1:
-        x = run_cmd(pre_file+"kmeans 3 800 3 600 < "+input1_file_path)
+    if run_cmd("./kmeans 3 800 3 600 < "+input1_file_path)!=output1:
         print("\t\tError in 2.1")
         tests_passed=False
     if run_cmd(pre_file+"kmeans 7 430 11 < "+input2_file_path)!=output2:
@@ -241,10 +240,12 @@ def main():
     print("---------All tests are done!---------")
 
 def run_cmd(cmd):
-    s=subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,stderr=subprocess.PIPE).stdout.read().decode()
+    s=subprocess.Popen(cmd+" > a.txt", shell=True, stdout=subprocess.PIPE,stderr=subprocess.PIPE).stdout.read().decode()
     if platform.system() == "Windows":
         s = s.replace("\r","")
     print(s)
+    with open("a.txt", "r") as f:
+        print(f.read())
     return s
 
 def get_ret_code(cmd):
