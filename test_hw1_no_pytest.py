@@ -6,12 +6,12 @@ FILENAME_REGEX = re.compile(r"(\d{9})_(\d{9})_assignment1.zip")
 TIMEOUT = 5
 
 
-def is_valid_filename(filename: str):
+def is_valid_filename(filename):
     """Checks that filename is of the sort id1_id2_bc.c"""
     return FILENAME_REGEX.match(filename)
 
 
-def is_valid_id(id: str):
+def is_valid_id(id):
     """See https://he.wikipedia.org/wiki/%D7%A1%D7%A4%D7%A8%D7%AA_%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%AA"""
 
     if id == "111111111":
