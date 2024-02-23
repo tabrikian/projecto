@@ -117,7 +117,6 @@ cluster** create_clasters(point* points){
 void add_point_to_cluster(cluster *c, point p){
     c->points[c->size_of_points] = p;
     c->size_of_points++;
-    printf("%d\n", c->size_of_points);
 }
 
 double update_mean_in_cluster(cluster* c){
@@ -205,7 +204,7 @@ int main(int argc, char * argv[]){
         max_change = 0;
 
         for(j = 0; j < k; j++){
-            printf("in %d\n", j);
+            printf("in %d, size %d\n", j, clusters[j]->size_of_points);
             change = update_mean_in_cluster(clusters[j]);
             printf("in %d pass\n", j);
             clear_cluster(clusters[j]);
