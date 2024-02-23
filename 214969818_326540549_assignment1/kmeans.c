@@ -175,7 +175,7 @@ int main(int argc, char * argv[]){
     point* points;
     cluster** clusters;
     cluster* closest;
-    int i, j;
+    int i, j, j1;
     double change, max_change;
 
     if (set_parameters(argc, argv)){
@@ -194,11 +194,6 @@ int main(int argc, char * argv[]){
     printf("done setup\n");
 
     for(i = 0; i < iter; i++){
-        printf("start %d\n",k);
-        for(j = 0; j < k; j++){
-            printf("cluster %d size %d\n", j, clusters[j]->size_of_points);
-        }
-
         /*step 3 in the algorithem*/
         for(j = 0; j < n; j++){
             closest = find_closeset_cluster(clusters, points[j]);
@@ -216,6 +211,10 @@ int main(int argc, char * argv[]){
         max_change = 0;
 
         for(j = 0; j < k; j++){
+            printf("start %d\n",k);
+            for(j1 = 0; j1 < k; j1++){
+                printf("cluster %d size %d\n", j1, clusters[j1]->size_of_points);
+            }
             printf("in %d, size %d\n", j, clusters[j]->size_of_points);
             change = update_mean_in_cluster(clusters[j]);
             printf("in %d pass\n", j);
