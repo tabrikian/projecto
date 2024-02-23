@@ -124,7 +124,7 @@ double update_mean_in_cluster(cluster* c){
     double t;
     double avg;
     int i, cord;
-    for (cord = 0; cord < k; cord++){
+    for (cord = 0; cord < d; cord++){
         avg = 0;
         for(i = 0; i < c->size_of_points; i++){
             avg += c->points[i].cordinates[cord];
@@ -216,9 +216,6 @@ int main(int argc, char * argv[]){
             }
             printf("in %d, size %d\n", j, clusters[j]->size_of_points);
             change = update_mean_in_cluster(clusters[j]);
-            for(j1 = 0; j1 < k; j1++){
-                printf("cluster %d size %d\n", j1, clusters[j1]->size_of_points);
-            }
             printf("in %d pass\n", j);
             clear_cluster(clusters[j]);
             printf("in %d done\n", j);
