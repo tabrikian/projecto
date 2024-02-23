@@ -129,6 +129,7 @@ double update_mean_in_cluster(cluster* c){
         for(i = 0; i < c->size_of_points; i++){
             avg += c->points[i].cordinates[cord];
         }
+        printf("loop passed %d\n", cord);
         avg /= c->size_of_points;
         t = c->mean.cordinates[cord]-avg;
         squared_dis += t*t;
