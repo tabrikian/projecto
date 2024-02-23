@@ -122,10 +122,9 @@ double update_mean_in_cluster(cluster* c){
     int i, cord;
     for (cord = 0; cord < k; cord++){
         avg = 0;
-        printf("in cord %d\n", cord);
         for(i = 0; i < c->size_of_points; i++){
+            printf("in cord %d\n", cord);
             avg += c->points[i].cordinates[cord];
-            printf("done %d of %d in %d", i, c->size_of_points, cord);
         }
         avg /= c->size_of_points;
         t = c->mean.cordinates[cord]-avg;
