@@ -187,6 +187,7 @@ int main(int argc, char * argv[]){
         return 1;
     }
     printf("got points\n");
+    printf("%d\n",k);
     clusters = create_clasters(points);
     if(clusters == NULL){
         return 1;
