@@ -150,9 +150,19 @@ double distance_from_cluster(cluster c, point p){
 cluster* find_closeset_cluster(cluster** clusters, point p){
     cluster* closest = clusters[0];
     int i;
+    
+    printf("start %d\n",k);
+    for(i = 0; i < k; i++){
+        printf("cluster %d size %d\n", i, clusters[i]->size_of_points);
+    }
     for(i = 0; i < k; i++){
         if (distance_from_cluster(*closest, p) > distance_from_cluster(*(clusters[i]), p))
             closest = clusters[i];
+    }
+    
+    printf("end %d\n",k);
+    for(i = 0; i < k; i++){
+        printf("cluster %d size %d\n", i, clusters[i]->size_of_points);
     }
     return closest;
 }
@@ -187,15 +197,9 @@ int main(int argc, char * argv[]){
         return 1;
     }
     printf("got points\n");
-    printf("%d\n",k);
     clusters = create_clasters(points);
     if(clusters == NULL){
         return 1;
-    }
-
-    printf("%d\n",k);
-    for(i = 0; i < k; i++){
-        printf("cluster %d size %d\n", i, clusters[i]->size_of_points);
     }
     
     printf("done setup\n");
