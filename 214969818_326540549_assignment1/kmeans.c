@@ -185,13 +185,10 @@ int main(int argc, char * argv[]){
     if(points == NULL){
         return 1;
     }
-    printf("got points\n");
     clusters = create_clasters(points);
     if(clusters == NULL){
         return 1;
     }
-    
-    printf("done setup\n");
 
     for(i = 0; i < iter; i++){
         /*step 3 in the algorithem*/
@@ -199,38 +196,22 @@ int main(int argc, char * argv[]){
             closest = find_closeset_cluster(clusters, points[j]);
             add_point_to_cluster(closest, points[j]);
         }
-        printf("i d3 %d\n", i);
-
-        
-        printf("end %d\n",k);
-        for(j = 0; j < k; j++){
-            printf("cluster %d size %d\n", j, clusters[j]->size_of_points);
-        }
 
         /*step 4 in the algorithem*/
         max_change = 0;
 
         for(j = 0; j < k; j++){
-            for(j1 = 0; j1 < k; j1++){
-                printf("cluster %d size %d\n", j1, clusters[j1]->size_of_points);
-            }
-            printf("in %d, size %d\n", j, clusters[j]->size_of_points);
             change = update_mean_in_cluster(clusters[j]);
-            printf("in %d pass\n", j);
             clear_cluster(clusters[j]);
-            printf("in %d done\n", j);
 
             if (change > max_change)
                 max_change = change;
         }
-        printf("i d4 %d\n", i);
 
         /*step 5 in the algorithem*/
         if (max_change < EPS)
             break;
-        printf("i d5 %d\n", i);
     }
-    printf("i an out\n");
     /*print results*/
     for(i = 0;  i < k; i++){
         printf("%.4f", clusters[i]->mean.cordinates[0]);
