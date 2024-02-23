@@ -96,6 +96,10 @@ cluster** create_clasters(point* points){
     }
     for(i = 0; i < k; i ++){
         clusters[i] = (cluster*) malloc(sizeof(cluster));
+        if (clusters[i] == NULL){
+            printf("An Error Has Occurred\n");
+            return NULL;
+        }
         clusters[i]->size_of_points = 0;
         clusters[i]->points = (point*) malloc(sizeof(point)*n);
         clusters[i]->mean.cordinates = (double*) malloc(sizeof(double)*d);
@@ -113,6 +117,7 @@ cluster** create_clasters(point* points){
 void add_point_to_cluster(cluster *c, point p){
     c->points[c->size_of_points] = p;
     c->size_of_points++;
+    printf("%d\n", c->size_of_points);
 }
 
 double update_mean_in_cluster(cluster* c){
@@ -123,7 +128,6 @@ double update_mean_in_cluster(cluster* c){
     for (cord = 0; cord < k; cord++){
         avg = 0;
         for(i = 0; i < c->size_of_points; i++){
-            printf("in cord %d\n", cord);
             avg += c->points[i].cordinates[cord];
         }
         avg /= c->size_of_points;
