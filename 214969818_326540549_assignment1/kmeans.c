@@ -211,12 +211,14 @@ int main(int argc, char * argv[]){
         max_change = 0;
 
         for(j = 0; j < k; j++){
-            printf("start %d\n",k);
             for(j1 = 0; j1 < k; j1++){
                 printf("cluster %d size %d\n", j1, clusters[j1]->size_of_points);
             }
             printf("in %d, size %d\n", j, clusters[j]->size_of_points);
             change = update_mean_in_cluster(clusters[j]);
+            for(j1 = 0; j1 < k; j1++){
+                printf("cluster %d size %d\n", j1, clusters[j1]->size_of_points);
+            }
             printf("in %d pass\n", j);
             clear_cluster(clusters[j]);
             printf("in %d done\n", j);
