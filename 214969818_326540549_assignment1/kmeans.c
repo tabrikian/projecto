@@ -191,6 +191,10 @@ int main(int argc, char * argv[]){
     if(clusters == NULL){
         return 1;
     }
+
+    for(int i = 0; i < k; i++){
+        printf("cluster %d size %d", i, clusters[i]->size_of_points);
+    }
     
     printf("done setup\n");
 
