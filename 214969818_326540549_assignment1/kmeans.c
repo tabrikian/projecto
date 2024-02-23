@@ -197,7 +197,7 @@ int main(int argc, char * argv[]){
 
     for(i = 0; i < iter; i++){
         printf("start %d\n",k);
-        for(j = 0; j < k; i++){
+        for(j = 0; j < k; j++){
             printf("cluster %d size %d\n", j, clusters[j]->size_of_points);
         }
 
@@ -210,7 +210,7 @@ int main(int argc, char * argv[]){
 
         
         printf("end %d\n",k);
-        for(j = 0; j < k; i++){
+        for(j = 0; j < k; j++){
             printf("cluster %d size %d\n", j, clusters[j]->size_of_points);
         }
 
