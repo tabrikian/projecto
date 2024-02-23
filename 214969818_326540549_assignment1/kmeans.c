@@ -200,8 +200,11 @@ int main(int argc, char * argv[]){
         max_change = 0;
 
         for(j = 0; j < k; j++){
+            printf("in %d\n", j);
             change = update_mean_in_cluster(clusters[j]);
+            printf("in %d pass\n", j);
             clear_cluster(clusters[j]);
+            printf("in %d done\n", j);
 
             if (change > max_change)
                 max_change = change;
