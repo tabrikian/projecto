@@ -175,7 +175,7 @@ int main(int argc, char * argv[]){
     point* points;
     cluster** clusters;
     cluster* closest;
-    int i, j, j1;
+    int i, j;
     double change, max_change;
 
     if (set_parameters(argc, argv)){
