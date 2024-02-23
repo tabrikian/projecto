@@ -192,7 +192,7 @@ int main(int argc, char * argv[]){
         return 1;
     }
 
-    for(int i = 0; i < k; i++){
+    for(i = 0; i < k; i++){
         printf("cluster %d size %d", i, clusters[i]->size_of_points);
     }
     
